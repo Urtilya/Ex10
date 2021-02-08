@@ -52,7 +52,7 @@ std::string infix2postfix(std::string infix) {
   MyStack<char> stack_operations(N);
   std::string RPN;
   unsigned i = 0, rpn_index = 0;
-  unsigned str_len = str.length(),
+  unsigned str_len = str.length();
   while (i != str_len) {
     if (check_symbol(str[i])) {
       unsigned cur_i = i;

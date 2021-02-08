@@ -1,4 +1,4 @@
-// Copyright 2020 A.SHT
+// Copyright 2020 Urtyukov Ilya
 #include <iostream>
 #include <string>
 
@@ -7,3 +7,4 @@
 int main() {
   return 0;
 }
+

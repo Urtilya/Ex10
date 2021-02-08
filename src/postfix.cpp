@@ -2,6 +2,8 @@
 #include "MyStack.h"
 #include "postfix.h"
 
+#define N 5000
+
 int number(std::string str, int i, int n) {
   int x = 0;
   while ((i != n) && (str[i] > 47 && str[i] < 58 || str[i] == '.')) {
@@ -46,13 +48,14 @@ std::string delete_gaps(std::string str) {
 }
 
 std::string infix2postfix(std::string infix) {
-  str = delete_gaps(infix);
+  std::string str = delete_gaps(infix);
   MyStack<char> stack_operations(N);
   std::string RPN;
-  unsigned int i = 0, str_len = str.length(), rpn_index = 0;
+  unsigned i = 0, rpn_index = 0;
+  unsigned str_len = str.length(),
   while (i != str_len) {
     if (check_symbol(str[i])) {
-      unsigned int cur_i = i;
+      unsigned cur_i = i;
       i += new_index(i, number(str, i, str_len));
       for (int j = cur_i; j < i; j++)
         RPN.insert(rpn_index++, 1, str[j]);
@@ -86,7 +89,7 @@ std::string infix2postfix(std::string infix) {
     RPN.insert(rpn_index++, 1, ' ');
   }
   char result[N] = { '\0' };
-  for (unsigned int i = 0; i < rpn_index - 1; i++)
+  for (size_t i = 0; i < rpn_index - 1; i++)
     result[i] = RPN[i];
   return std::string(result);
 }
